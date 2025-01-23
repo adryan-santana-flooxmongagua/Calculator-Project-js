@@ -66,9 +66,24 @@ class CalcController {
 
     }
 
+    getLastOperation(){
+        
+        return this._operation[this._operation.length-1];
+
+    }
+
     addOperation(value){
 
+        if (isNaN(this.getLastOperation())){
+
+
+        } else {
+            
+        }
+
         this._operation.push(value);
+
+        console.log(this._operation);
 
     }
 
@@ -111,6 +126,10 @@ class CalcController {
         case 'igual':
              
             break;
+
+        case 'ponto':
+            
+        break;
 
         case 0:
         case 1:
