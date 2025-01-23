@@ -41,6 +41,14 @@ class CalcController {
 
     }
 
+    initButtonsEvents(){
+
+        document.querySelectorAll("#buttons > g, #parts > g");
+        // document.querySelector"All" para selecionar todos os elementos igual que está no paramentro
+
+    }
+
+
     get displayTime(){
         return this._timeEl.innerHTML;
     }
