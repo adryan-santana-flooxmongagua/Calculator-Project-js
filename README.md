@@ -16,3 +16,5 @@ Este repositório é onde registrei algumas coisas que botei em pratica em JavaS
 
 ## **Aviso**  
 O conteúdo aqui reflete exatamente o que eu quis registrar. Não é um projeto em evolução, mas sim um registro do que aprendi ou quero guardar.
+
+### Não está Finalizado!!!
