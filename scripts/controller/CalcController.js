@@ -3,11 +3,24 @@ class CalcController {
     constructor(){
 
         this._displayCalc = "0";
-        this._dataAtual;
+        this._currentDate;
+        this.initialize();
 
     }
 
-    get _displayCalc(){
+    initialize(){
+
+        let displayCalcEl = document.querySelector("#display");
+        let dateEl = document.querySelector("#data");
+        let timeEl = document.querySelector("#hora");
+
+        displayCalcEl.innerHTML = "4566";
+        dateEl.innerHTML ="16/02/2007";
+        timeEl.innerHTML = "04:00";
+
+    }
+
+    get displayCalc(){
 
         return this._displayCalc;
 
@@ -19,19 +32,19 @@ class CalcController {
 
     }
 
-    get dataAtual(){
+    get currentDate(){
 
-        return this._dataAtual;
+        return this._currentDate;
 
     }
 
-    set dataAtual(valor){
+    set currentDate(valor){
 
-        this._dataAtual = valor;
+        this._currentDate = valor;
 
     }
 
 }
 
-// this._dataAtual; seria para deixar o atributo "privado" o "_" serve para isso 
+// this._currentDate; seria para deixar o atributo "privado" o "_" serve para isso 
 // esse get e set foram feito para poder privar realmente as informações digamos assim
