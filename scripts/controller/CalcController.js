@@ -42,21 +42,36 @@ class CalcController {
 
     }
 
+
+
+    addEventListenerAll(element, events,fn){
+
+        events.split(' ').forEach(event =>{
+
+            element.addEventListener(event,fn, false); 
+        });
+
+    }
+
     initButtonsEvents(){
 
        let buttons = document.querySelectorAll("#buttons > g, #parts > g");
         // document.querySelector"All" para selecionar todos os elementos igual que está no paramentro
-        
-
-
+    
 
         buttons.forEach((btn, index)=>{
 
-            btn.addEventListener('click', e =>{
+            this.addEventListenerAll(btn, "click drag", e =>{
 
                 console.log(btn.className.baseVal.replace("btn-",""));
     
             })
+
+            this.addEventListenerAll(btn, "mouseover mouseup mousedown", e => {
+
+                btn.style.cursor = "pointer"
+
+            });
 
         })
 
