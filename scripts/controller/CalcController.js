@@ -90,11 +90,8 @@ class CalcController {
 
         if(this._operation.length > 3){
 
-            let last = this._operation.pop();
-
             this.calc();
 
-            console.log(this._operation);
         }
 
     }
@@ -107,11 +104,24 @@ class CalcController {
 
         this._operation = [result, last];
 
+        this.setLastNumberToDisplay();
+
     }
 
     setLastNumberToDisplay(){
 
-        
+        let lastNumber;
+
+        for(let i = this._operation.length - 1; i >= 0; i--){
+
+            if(!this.isOperation(this._operation[i])){
+                lastNumber = this._operation[i];
+                break;
+            }
+
+        }
+
+        this.displayCalc = lastNumber;
 
     }
 
@@ -127,11 +137,13 @@ class CalcController {
 
             }else if(isNaN(value)){
                 
-                console.log('outra coisa', value)
+                console.log('outra coisa', value);
 
             }else{
             
                 this.pushOperation(value);
+
+                this.setLastNumberToDisplay();
 
             }
 
