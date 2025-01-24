@@ -56,7 +56,7 @@ class CalcController {
 
     clearAll(){
 
-        this,this._operation = [];
+        this._operation = [];
 
     }
 
@@ -67,21 +67,52 @@ class CalcController {
     }
 
     getLastOperation(){
-        
+
         return this._operation[this._operation.length-1];
+
+    }
+
+    setLastOperation(value){
+
+        this._operation[this._operation.length - 1] = value;
+
+    }
+
+    isOperation(value){
+
+         return (['+','-','*','%','/'].indexOf(value) > - 1);
 
     }
 
     addOperation(value){
 
-        if (isNaN(this.getLastOperation())){
+
+        console.log('A', isNaN(this.getLastOperation()));
 
 
-        } else {
+        if(isNaN(this.getLastOperation())){
+
+            if(this.isOperation(value)){
+
+                this.setLastOperation(value);
+
+            }else if(isNaN(value)){
+                
+                console.log(value)
+
+            }else{
             
+                this._operation.push(value);
+
+            }
+
+        }else{
+            
+            let newValue = this.getLastOperation().toString() + value.toString();
+            this.setLastOperation(parseInt(newValue));
         }
 
-        this._operation.push(value);
+
 
         console.log(this._operation);
 
@@ -104,50 +135,53 @@ class CalcController {
             this.clearEntry();
             break;
         case 'soma':
-             
+            this.addOperation('+');
             break;
         
         case 'subtracao':
-             
+            this.addOperation('-');
             break;
         
         case 'divisao':
-             
+            this.addOperation('/');
             break;
         
         case 'multiplicacao':
-             
+            this.addOperation('*');
             break;
         
-
         case 'porcento':
-             
+            this.addOperation('%');
             break;
         
         case 'igual':
-             
+
             break;
 
         case 'ponto':
-            
+            this.addOperation('.');
         break;
 
-        case 0:
-        case 1:
-        case 2:    
-        case 3:    
-        case 4:    
-        case 5:    
-        case 6:    
-        case 7:    
-        case 8:    
-        case 9:    
+        case '0':
+        case '1':
+        case '2':    
+        case '3':    
+        case '4':    
+        case '5':    
+        case '6':    
+        case '7':    
+        case '8':    
+        case '9':    
+
             this.addOperation(parseInt(value));
+
         break;
         
+
         default:
-            this.setError();
+      //      this.setError();
         break;
+      
 
         }
     }
@@ -160,16 +194,16 @@ class CalcController {
 
         buttons.forEach((btn, index)=>{
 
-            this.addEventListenerAll(btn, "click drag", e =>{
+            this.addEventListenerAll(btn, "click drag ", e =>{
 
                let textBtn = btn.className.baseVal.replace("btn-","");
     
-               this.execBtn();
+               this.execBtn(textBtn);
             })
 
             this.addEventListenerAll(btn, "mouseover mouseup mousedown", e => {
 
-                btn.style.cursor = "pointer"
+                btn.style.cursor = "pointer";
 
             });
 
