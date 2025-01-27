@@ -144,6 +144,9 @@ class CalcController {
                     break;
                
               
+                    default:
+                        this.setError();
+                     break;
         
                 }
 
@@ -225,8 +228,14 @@ class CalcController {
     }
 
     getResult(){
-
+        try{
         return eval(this._operation.join(""));
+    }catch(e){
+        setTimeout(() => {
+            this.setError();
+        }, 1);
+     
+    }
     }
 
     calc(){
@@ -431,7 +440,7 @@ class CalcController {
         
 
         default:
-      //      this.setError();
+           this.setError();
         break;
       
 
